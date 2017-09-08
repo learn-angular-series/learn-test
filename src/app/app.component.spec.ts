@@ -29,4 +29,9 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
   }));
+
+  it('测试Jasmine语法', async(() => {
+    // expect(true).toBe(false);
+    // expect(1+1).toBe(3);
+  }));
 });
