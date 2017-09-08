@@ -8,6 +8,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-htmlfile-reporter'),
       require('karma-mocha-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma')
@@ -22,7 +23,17 @@ module.exports = function (config) {
     angularCli: {
       environment: 'dev'
     },
-    reporters: ['progress','mocha'],
+    reporters: ['progress','mocha','html'],
+    htmlReporter: {
+      outputFile: 'unit-test-report/report.html',
+      
+      // Optional 
+      pageTitle: '单元测试结果',
+      subPageTitle: 'learn-test',
+      groupSuites: true,
+      useCompactStyle: true,
+      useLegacyStyle: true
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
