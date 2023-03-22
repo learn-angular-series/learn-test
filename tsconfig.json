@@ -17,7 +17,14 @@
       "../node_modules/@types"
     ]
   },
+  "include": [
+    "**/*.ts",
+    "node_modules/cypress"
+  ],
   "exclude": [
-    "node_modules"
+    "cypress/**/*.ts",
+    "**/*.spec.ts",
+    "node_modules",
+    "node_modules/cypress"
   ]
 }

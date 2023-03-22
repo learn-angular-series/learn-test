@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "LearnComponent": {
+    "learn-test": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -14,7 +14,7 @@
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "tsConfig": "tsconfig.json",
+            "tsConfig": "./tsconfig.json",
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
@@ -76,30 +76,30 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "LearnComponent:build"
+            "browserTarget": "learn-test:build",
           },
           "configurations": {
             "mock": {
-              "browserTarget": "LearnComponent:build:mock"
+              "browserTarget": "learn-test:build:mock"
             },
             "production": {
-              "browserTarget": "LearnComponent:build:production"
+              "browserTarget": "learn-test:build:production"
             },
             "hmr": {
-              "browserTarget": "LearnComponent:build:hmr"
+              "browserTarget": "learn-test:build:hmr"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "LearnComponent:build"
+            "browserTarget": "learn-test:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "tsconfig.spec.json",
+            "tsConfig": "./tsconfig.spec.json",
             "karmaConfig": "./karma.conf.js",
             "codeCoverage": true,
             "polyfills": [
@@ -119,34 +119,24 @@
             ]
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.json"
-            ],
-            "exclude": []
-          }
-        }
-      }
-    },
-    "LearnComponent-e2e": {
-      "root": "",
-      "sourceRoot": "",
-      "projectType": "application",
-      "architect": {
         "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+          "builder": "@cypress/schematic:cypress",
           "options": {
-            "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "LearnComponent:serve"
+            "devServerTarget": "learn-test:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "learn-test:serve:production"
+            }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "e2e/tsconfig.json"
+              "./tsconfig.json"
             ],
             "exclude": []
           }
@@ -154,7 +144,7 @@
       }
     }
   },
-  "defaultProject": "LearnComponent",
+  "defaultProject": "learn-test",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "",

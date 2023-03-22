@@ -12,7 +12,9 @@
     "**/*.d.ts",
   ],
   "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
+    "cypress/**/*.ts",
+    "**/*.spec.ts",
+    "node_modules",
+    "node_modules/cypress"
   ]
 }
