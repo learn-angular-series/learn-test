@@ -7,9 +7,10 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-coverage'),
+      require('karma-coverage-istanbul-reporter'),
       require('karma-htmlfile-reporter'),
       require('karma-mocha-reporter'),
-      require('karma-coverage-istanbul-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
@@ -25,7 +26,6 @@ module.exports = function (config) {
     reporters: ['progress', 'mocha', 'html'],
     htmlReporter: {
       outputFile: 'unit-test-report/report.html',
-
       // Optional 
       pageTitle: '单元测试结果',
       subPageTitle: 'learn-test',
